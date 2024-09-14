@@ -1,0 +1,14 @@
+[theme]
+
+primaryColor = '#000000'
+
+backgroundColor = '#A0A0A0'
+
+secondaryBackgroundColor = '#006600'
+
+textColor = '#FFFFFF'
+
+# Font family for all text in the app, except code blocks
+# Accepted values (serif | sans serif | monospace)
+# Default: "sans serif"
+font = "sans serif"
