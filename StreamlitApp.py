@@ -121,9 +121,7 @@ async def main():
         }
 
         with st.popover(":material/settings: Settings", use_container_width=True):
-            st.session_state.name = st.text_input("Name", type="default")
-            st.session_state.session_id = st.text_input("Session Id", type="default")
-
+            st.session_state.session_id = st.text_input("Session Id", type="default", value=str(uuid.uuid4()))
             m = st.radio("Service to use", options=options.keys())
             option = options[m]
 
