@@ -21,7 +21,7 @@ class ChatClient:
                 f"{self.url}/supervisor/{session_id}",
                 json={"message": request.message}
             )
-            logging.info(response)
+            logging.error(response.json())
             return Response(content=response.json().get('content'))
         except requests.RequestException as e:
             logging.error(f"Request failed: {e}")
