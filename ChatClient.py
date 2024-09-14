@@ -25,7 +25,7 @@ class ChatClient:
             return Response(content=response.json().get('content'))
         except requests.RequestException as e:
             logging.error(f"Request failed: {e}")
-            return Response(content="An error occurred", status_code=500)
+            raise e
 
 
 

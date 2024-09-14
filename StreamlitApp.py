@@ -135,9 +135,6 @@ async def main():
     if "session_id" in st.session_state:
         st.session_state.session_id = str(uuid.uuid4())
 
-    if "service_url" in st.session_state:
-        st.session_state.service_url = "http://localhost:8080"
-
     if len(messages) > 0:
         await draw_messages(messages)
 
