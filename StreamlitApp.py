@@ -121,7 +121,8 @@ async def main():
         }
 
         with st.popover(":material/settings: Settings", use_container_width=True):
-            session_option = options[st.radio("Session Option", options=options.keys())]
+            so = st.radio("Session Option", options=options.keys())
+            session_option = options[so]
 
             if session_option == 1:
                 st.session_state.session_id = str(uuid.uuid4())
