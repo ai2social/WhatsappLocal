@@ -13,17 +13,16 @@ class Response(BaseModel):
 class ChatClient:
     def __init__(self, url):
         self.url = url
-        self.client = httpx.AsyncClient()
-
     async def ainvoke(self, request: Request, session_id: str) -> Response:
-        response = await self.client.post(
-            f"{self.url}/supervisor/{session_id}",
-            json={
-                "message": request.message
-            },
-        )
-        logging.info(response)
-        return Response(content=response.json()['content'])
+        async with httpx.AsyncClient() as client:
+            response = await client.post(
+                f"{self.url}/supervisor/{session_id}",
+                json={
+                    "message": request.message
+                },
+            )
+            logging.info(response)
+            return Response(content=response.json()['content'])
 
 
 
