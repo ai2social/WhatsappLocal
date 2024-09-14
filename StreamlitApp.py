@@ -128,7 +128,7 @@ async def main():
     messages: List[ChatMessage] = st.session_state.messages
 
     if len(messages) == 0:
-        WELCOME = "Oi! Seja bem vindo ao whatsapp clone"
+        WELCOME = "Oi! Seja bem vindo ao Whatsapp Clone"
         with st.chat_message("ai"):
             st.write(WELCOME)
 
@@ -149,7 +149,7 @@ async def main():
         client = get_agent_client(st.session_state.service_url)
 
         try:
-            response = await client.ainvoke(
+            response = client.invoke(
                 request=Request(message=input),
                 session_id=session_id,
             )
