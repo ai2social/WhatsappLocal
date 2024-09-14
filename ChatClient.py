@@ -1,5 +1,6 @@
 from pydantic import BaseModel
 import httpx
+import logging
 
 class Request(BaseModel):
     message: str
@@ -21,6 +22,7 @@ class ChatClient:
                 "message": request.message
             },
         )
+        logging.info(response)
         return Response(content=response.json()['content'])
 
 
