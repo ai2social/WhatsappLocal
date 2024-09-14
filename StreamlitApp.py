@@ -83,6 +83,7 @@ def get_agent_client(url):
 def clear_chat():
     st.session_state.messages = []
 
+
 async def main():
     APP_TITLE = "Whatsapp Clone"
     APP_ICON = "🧩"
@@ -114,10 +115,23 @@ async def main():
         ""
         "Whatsapp Clone: Feito para testes local"
 
+        options = {
+            "default": 1,
+            "custom": 2
+        }
+
         with st.popover(":material/settings: Settings", use_container_width=True):
             st.session_state.name = st.text_input("Name", type="default")
             st.session_state.session_id = st.text_input("Session Id", type="default")
-            st.session_state.service_url = st.text_input("Service Url", type="default")
+
+            m = st.radio("Service to use", options=options.keys())
+            option = options[m]
+
+            if option == 1:
+                st.session_state.service_url = os.getenv("SERVICE_URL")
+            else:
+                st.session_state.service_url = st.text_input("Service Url", type="default")
+
 
         st.button("Limpar chat", on_click=clear_chat, type="primary")
 
@@ -126,6 +140,7 @@ async def main():
     if "messages" not in st.session_state:
         st.session_state.messages = []
     messages: List[ChatMessage] = st.session_state.messages
+
 
     if len(messages) == 0:
         WELCOME = "Oi! Seja bem vindo ao Whatsapp Clone"
