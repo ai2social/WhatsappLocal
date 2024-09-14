@@ -112,7 +112,7 @@ async def main():
     with st.sidebar:
         st.header(f"{APP_ICON} {APP_TITLE}")
         ""
-        "Whatsapp Clone: Feito para testes locais"
+        "Whatsapp Clone: Feito para testes local"
 
         with st.popover(":material/settings: Settings", use_container_width=True):
             st.session_state.name = st.text_input("Name", type="default")
