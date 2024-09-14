@@ -121,10 +121,15 @@ async def main():
         }
 
         with st.popover(":material/settings: Settings", use_container_width=True):
-            st.session_state.session_id = st.text_input("Session Id", type="default", value=str(uuid.uuid4()))
+            session_option = options[st.radio("Session Option", options=options.keys())]
+
+            if session_option == 1:
+                st.session_state.session_id = str(uuid.uuid4())
+            else:
+                st.session_state.session_id = st.text_input("Session Id", type="default")
+
             m = st.radio("Service to use", options=options.keys())
             option = options[m]
-
             if option == 1:
                 st.session_state.service_url = os.getenv("SERVICE_URL")
             else:
